@@ -116,8 +116,9 @@
   color: var(--cs-ink);
 }
 
-.cards.products .cards-card-body p.button-container {
+.cards.products .cards-card-body p.button-wrapper {
   margin-top: auto;
+  margin-bottom: 0;
 }
 
 .cards.products .cards-card-body a.button {
