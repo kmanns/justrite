@@ -57,15 +57,16 @@ main .section.cs-why {
   margin: 0;
 }
 
-main .section.cs-viewall {
-  text-align: right;
-  margin-top: calc(-1 * var(--spacing-medium));
-}
-
-main .section.cs-viewall a {
+/* "View All …" text links inside the light bands */
+main .section.cs-categories .default-content-wrapper a {
   color: var(--cs-navy);
   font-family: var(--cs-heading-font);
   font-weight: 600;
+  font-size: 1.5rem;
+}
+
+main .section.cs-categories .default-content-wrapper a:hover {
+  color: var(--cs-orange);
 }
 
 /* ---- Promo strip (3 marketing banners under the hero) ---- */
