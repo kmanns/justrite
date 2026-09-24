@@ -81,7 +81,7 @@ main .section.cs-promos {
 }
 
 /* ---- Industry tab bar (visual) ---- */
-main .section.cs-industries .cs-tabs {
+main .section.cs-industries .default-content-wrapper ul {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
@@ -91,7 +91,7 @@ main .section.cs-industries .cs-tabs {
   justify-content: flex-start;
 }
 
-main .section.cs-industries .cs-tabs li {
+main .section.cs-industries .default-content-wrapper ul li {
   font-family: var(--cs-heading-font);
   font-weight: 600;
   font-size: 1.5rem;
@@ -101,7 +101,7 @@ main .section.cs-industries .cs-tabs li {
   color: var(--cs-ink);
 }
 
-main .section.cs-industries .cs-tabs li:first-child {
+main .section.cs-industries .default-content-wrapper ul li:first-child {
   background: var(--cs-navy);
   color: #fff;
 }
