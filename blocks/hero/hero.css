@@ -73,8 +73,9 @@
   margin: 0 0 1.5rem;
 }
 
-.hero.cs-hero p.button-container {
+.hero.cs-hero p.button-wrapper {
   margin-bottom: 0;
+  margin-top: var(--spacing-small);
 }
 
 .hero.cs-hero a.button {
