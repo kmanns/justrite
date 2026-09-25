@@ -8,11 +8,11 @@
 
 /* header and nav layout */
 header .nav-wrapper {
-  background-color: var(--background-color);
+  background-color: #fff;
   width: 100%;
   z-index: 3;
   position: fixed;
-  border-bottom: 1px solid var(--color-neutral-300);
+  border-bottom: 3px solid var(--cs-orange);
 }
 
 header nav {
@@ -76,8 +76,8 @@ header nav .nav-hamburger button {
   border: 0;
   border-radius: 0;
   padding: 0;
-  background-color: var(--color-neutral-50);
-  color: inherit;
+  background-color: transparent;
+  color: var(--cs-ink);
   overflow: initial;
   text-overflow: initial;
   white-space: initial;
@@ -148,6 +148,14 @@ header nav .nav-brand {
   min-width: 128px;
 }
 
+/* reserve the full 190px logo width on desktop so it doesn't overlap the menu */
+@media (min-width: 900px) {
+  header nav .nav-brand {
+    min-width: 190px;
+    flex-shrink: 0;
+  }
+}
+
 header nav .nav-brand a {
   grid-area: brand;
   flex-basis: 128px;
@@ -164,7 +172,8 @@ li.nav-drop img {
 }
 
 header nav .nav-brand img {
-  width: 128px;
+  width: 190px;
+  max-width: 190px;
   height: auto;
 }
 
@@ -333,6 +342,7 @@ header nav .nav-tools {
   gap: var(--spacing-small);
   align-items: center;
   background: var(--background-color);
+  color: var(--cs-ink);
   z-index: 3;
 }
 
@@ -894,27 +904,51 @@ body:has(.seller-assisted-buying-banner) {
 /* ============================================================
    ComplianceSigns demo — brand restyle (CSS only, no JS change)
    Preserves all drop-in tools (search / mini-cart / wishlist / account).
+   White bar, logo size, tools and hamburger colors are set in the base rules above.
    ============================================================ */
-header .nav-wrapper {
-  background-color: var(--cs-navy);
-  border-bottom: 3px solid var(--cs-orange);
-}
 
-/* Logo */
-header nav .nav-brand img {
-  width: 190px;
-  max-width: 190px;
-}
+/* Brand overrides intentionally follow the unrelated, more specific
+   drop-in selectors above (e.g. auth menu li), so this rule is a false positive here. */
+/* stylelint-disable no-descending-specificity */
 
-/* Top-level menu items sit on the navy bar → white */
+/* Top-level menu items sit on the white bar → dark ink */
 header nav .nav-sections .default-content-wrapper > ul > li,
 header nav .nav-sections .default-content-wrapper > ul > li > a {
-  color: #fff;
+  color: var(--cs-ink);
   font-family: var(--cs-heading-font);
   font-weight: 600;
   font-size: 1.6rem;
   letter-spacing: 0.02em;
   text-transform: uppercase;
+}
+
+/* Quote link matches the other menu items (it sits inside a <p>) */
+header nav .nav-sections .default-content-wrapper > ul > li.nav-quote a {
+  font: inherit;
+  color: var(--cs-ink);
+  text-decoration: none;
+}
+
+/* Tighter top-level spacing so logo + menu + tools fit on one row */
+@media (min-width: 900px) {
+  header nav .nav-sections .default-content-wrapper > ul {
+    gap: 0;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li {
+    padding: 0 12px;
+  }
+
+  /* "Request a Quote" as an icon, sized like the nav-tools buttons */
+  header nav .nav-sections .default-content-wrapper > ul > li.nav-quote a {
+    display: block;
+    width: 40px;
+    height: 40px;
+    font-size: 0;
+    background-image: url('../../icons/quote.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
 }
 
 header nav .nav-sections .default-content-wrapper > ul > li:hover {
@@ -943,16 +977,12 @@ header nav .nav-sections .default-content-wrapper > ul > li ul li a:hover {
   color: var(--cs-orange);
 }
 
-/* Tools (search / cart / wishlist / account icons) on navy → white */
-header nav .nav-tools {
-  color: #fff;
-}
-
+/* Tools (search / cart / wishlist / account icons) on white → dark ink */
 header nav .nav-tools button,
 header nav .nav-tools .nav-search-button,
 header nav .nav-tools .nav-cart-button,
 header nav .nav-tools .nav-wishlist-button {
-  color: #fff;
+  color: var(--cs-ink);
 }
 
 /* Mini-cart / search flyout panels keep their own light styling */
@@ -960,8 +990,4 @@ header nav .nav-tools .nav-tools-panel {
   color: var(--cs-ink);
 }
 
-/* Mobile hamburger on navy */
-header nav .nav-hamburger button {
-  background-color: transparent;
-  color: #fff;
-}
+/* stylelint-enable no-descending-specificity */

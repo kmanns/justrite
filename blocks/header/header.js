@@ -200,6 +200,8 @@ export default async function decorate(block) {
       .querySelectorAll(':scope .default-content-wrapper > ul > li')
       .forEach((navSection) => {
         if (navSection.querySelector('ul')) navSection.classList.add('nav-drop');
+        // "Request a Quote" renders as an icon on desktop (text stays for a11y / mobile)
+        if (/request a quote/i.test(navSection.textContent)) navSection.classList.add('nav-quote');
         setupSubmenu(navSection);
         navSection.addEventListener('click', (event) => {
           if (event.target.tagName === 'A') return;
