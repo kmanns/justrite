@@ -225,6 +225,9 @@ header nav .nav-sections ul>li:empty {
     display: block;
     visibility: visible;
     white-space: nowrap;
+
+    /* size to the menu so free space is shared evenly between logo, menu and tools */
+    flex: 0 1 auto;
   }
 
   header nav[aria-expanded='true'] .nav-sections {
@@ -929,6 +932,20 @@ header nav .nav-sections .default-content-wrapper > ul > li.nav-quote a {
   text-decoration: none;
 }
 
+/* "Request a Quote" icon, sized like the other nav-tools buttons (desktop only) */
+header nav .nav-tools .quote-wrapper {
+  display: none;
+}
+
+header nav .nav-tools .nav-quote-button {
+  display: block;
+  width: 40px;
+  height: 40px;
+  background-image: url('../../icons/quote.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 /* Tighter top-level spacing so logo + menu + tools fit on one row */
 @media (min-width: 900px) {
   header nav .nav-sections .default-content-wrapper > ul {
@@ -939,15 +956,13 @@ header nav .nav-sections .default-content-wrapper > ul > li.nav-quote a {
     padding: 0 12px;
   }
 
-  /* "Request a Quote" as an icon, sized like the nav-tools buttons */
-  header nav .nav-sections .default-content-wrapper > ul > li.nav-quote a {
+  /* Desktop: quote lives in nav-tools as an icon, so hide the menu text item */
+  header nav .nav-sections .default-content-wrapper > ul > li.nav-quote {
+    display: none;
+  }
+
+  header nav .nav-tools .quote-wrapper {
     display: block;
-    width: 40px;
-    height: 40px;
-    font-size: 0;
-    background-image: url('../../icons/quote.svg');
-    background-repeat: no-repeat;
-    background-position: center;
   }
 }
 
